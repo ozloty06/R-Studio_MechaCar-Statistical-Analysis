@@ -20,6 +20,10 @@ A linear regression analysis was used to explore, quantify and measure the varia
 
 ![correlation_matrix](https://github.com/ozloty06/R-Studio_MechaCar-Statistical-Analysis/blob/main/correlation_matrix.png)
 
+Further, our summary statistics indicate a correlation of our intercept (MPG) with both vehicle length and ground clearance, as indicated by the *** symbols, with a slight correlation with vehicle weight at a significance code of 0.05, as indicated by the . symbol.
+
+![summary_coefficients](https://github.com/ozloty06/R-Studio_MechaCar-Statistical-Analysis/blob/main/significant_coefficients.png)
+
 When plotted for linear regression analysis, the slope of our linear model was greater than zero, indicating a positive correlation of vehicle length to mpg. This is surprising as motorists are generally advised that smaller cars yield higher fuel efficiency (mpg). Therefore an inverse correlationw as expected but not found in this data set. Our null hypothesis states that the slow is equal to zero and alternate hypothesis states that the slope is not equal to zero, therefore there is sufficient evidence to reject our null hypothesis. 
 
 > lm(mpg ~ vehicle_weight + spoiler_angle + ground_clearance + AWD + vehicle_length,data=prototypes_data) # generate multiple linear regression model
