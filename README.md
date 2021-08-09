@@ -88,7 +88,7 @@ To further our analysis of the MechaCar prototype on behalf of the AutosRUs lead
 - operating/maintenance expenses (insurance, fuel, repair costs, etc.)
 
 For the study, we would want to look at newest models from comparable competitors and would limit our analysis to comparable vehicles for the prior 2 model years. Our hypotheses for the study would be as follows:
-- Null Hypothesis, H~0~: The MechaCar protoype does not outperform comparable competitor vehicles in fuel efficiency and safety.
-- Alternate Hypothesis, H~a~: The MechaCar outperforms comparable models in fuel efficiency and safety.
+- Null Hypothesis, H<sub>0</sub>: The MechaCar protoype does not outperform comparable competitor vehicles in fuel efficiency and safety.
+- Alternate Hypothesis, H<sub>a</sub>: The MechaCar outperforms comparable models in fuel efficiency and safety.
 
 To conduct our statistical test, we can use a two-way ANOVA to test both fuel efficiency and safety ratings across multiple groups of data from the manufacturers. This test is the most straightforward way to compare means across large real-world numerical data with more than one sample or groups providing data.
