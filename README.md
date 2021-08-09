@@ -14,7 +14,6 @@ This analysis includes a linear regression analysis to identify variables that p
 #### Linear Regression to Predict MPG
 A linear regression analysis was used to explore, quantify and measure the variability of coorelated variables. To do this, data from the manufacturing team included vehicle length, vehicle weight, spoiler angle, ground clearance, drive type (AWD), and mpg was used to create a correlation matrix. Variable coefficients varied from 2.5% to 33% for most variables in our MechaCar data set except mpg and vehicle length, which had the higest non-random correlation of 61%. There also exists some correlation of mpg to ground clearance with a non-random correlation of 33%.
 
-> # Create a correlation matrix
 > prototypes_matrix <- as.matrix(prototypes_data[,c("vehicle_length","vehicle_weight","spoiler_angle", "ground_clearance", "AWD", "mpg")]) #convert data frame into numeric matrix
 > matrix <- cor(prototypes_matrix)
 
@@ -35,9 +34,13 @@ While the linear model does predict the mpg of MechaCar prototypes with a Pearso
 #### Summary Statistics on Suspension Coils
 The design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per square inch. A target mean of 1500 PSI was provided. Our data indicates a mean of 1498.78 with a median 1500, variance of 62.29356 and a standard deviation of 7.892627. Therefore, our current manufacturing data does collectively meet this design specification in total.
 
+> total_summary <- suspension_data %>% summarize(Mean=mean(PSI),Median=median(PSI),Variance=var(PSI),SD=sd(PSI)) #create summary table with multiple columns
+
 [total_summary]
 
 When we looked at individual lots, three lots were included in our data set. Our means ranged from 1496-1500 with medians from 1498 to 1500. However, our variance indicates a possible area of concern with Lot 3. Lots 1 and 2 had a variance of 0.98 and 7.47 respectively with a standard deviation of 0.99 and 2.73 respectively. Meanwhile, Lot 3 shows a variance of 170 and a standard deviation of 13.0. 
+
+> lot_summary <- suspension_data %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI),Median=median(PSI),Variance=var(PSI),SD=sd(PSI), .groups = 'keep') #create summary table with multiple columns
 
 [lot_summary]
 
@@ -46,10 +49,21 @@ With the variance of 170 and standard deviation of 13.0, it is likely that some 
 A bar chart depicting variance by lot shows Lot 1 data falling consistently close to the target PSI while variability increases within Lot 2 and finally Lot 3.
 
 
+[bar-chart]
+
 #### T-Tests on Suspension Coils
 Our last analysis includes t-tests to compare the means to sample datasets. T-tests were conducted on a sample subset of the data and for each of the three manufacturing lots within the data. 
 
+> total_lots <- t.test((sample_table$PSI),mu=mean(suspension_data$PSI)) #compare sample versus population means
+
 [total_lots]
+
+> Lot1 <- t.test(subset(sample_table, Manufacturing_Lot == "Lot1")$PSI,mu=1500)
+> Lot1
+> Lot2 <- t.test(subset(sample_table, Manufacturing_Lot == "Lot2")$PSI,mu=1500)
+> Lot2
+> Lot3 <- t.test(subset(sample_table, Manufacturing_Lot == "Lot3")$PSI,mu=1500)
+> Lot3
 
 [lots_ttest]
 
